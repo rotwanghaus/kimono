@@ -2,10 +2,16 @@ import dat = require("dat.gui");
 import { config } from "../consts/config";
 import ParalaxInfo from "./modules/ParalaxInfo/ParalaxInfo";
 import Scene from "./modules/Scene";
+import Stats from "stats.js";
+
 // const phoneSize = 600;
 // const isPhone = window.innerWidth < phoneSize;
 const scene = new Scene("root", config);
 const instructionEl = document.querySelector("#instruction");
+
+var stats = new Stats();
+stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom);
 
 scene.onPlayback(() => {
   instructionEl.classList.remove("show");
@@ -16,20 +22,22 @@ scene.onReady = () => {
 
   if (process.env.NODE_ENV === "production") return;
   function fpsMeter() {
-    let prevTime = Date.now(),
-      frames = 0;
+    // let prevTime = Date.now(),
+    //   frames = 0;
 
     requestAnimationFrame(function loop() {
-      const time = Date.now();
-      frames++;
-      if (time > prevTime + 1000) {
-        let fps = Math.round((frames * 1000) / (time - prevTime));
-        prevTime = time;
-        frames = 0;
-
-        console.info("FPS: ", fps);
-      }
-
+      stats.begin();
+      stats.end();
+      //   const time = Date.now();
+      //   frames++;
+      //   if (time > prevTime + 1000) {
+      //     let fps = Math.round((frames * 1000) / (time - prevTime));
+      //     prevTime = time;
+      //     frames = 0;
+      //
+      //     console.info("FPS: ", fps);
+      //   }
+      //
       requestAnimationFrame(loop);
     });
   }
@@ -60,8 +68,9 @@ scene.onReady = () => {
     function raf() {
       if (!debug) return;
       labels.forEach((label) => {
+        const parent = label.target.closest("div");
         label.updatePosition();
-        const transform = label.container.style.transform;
+        const transform = parent.style.transform;
         const scale = /scale\((\d+(.\d+)?)\)/.exec(transform);
         label.updateLabel(`scale ${scale?.[1]}`);
       });

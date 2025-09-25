@@ -24,6 +24,7 @@
     "@parcel/config-default": "^2.13.2",
     "dat.gui": "^0.7.9",
     "lottie-web": "^5.12.2",
-    "motion": "^11.12.0"
+    "motion": "^11.12.0",
+    "stats.js": "^0.17.0"
   }
 }

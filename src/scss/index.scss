@@ -146,6 +146,7 @@ img {
 .paralax-info {
   display: block;
   position: absolute;
+  z-index: 9999;
   width: auto;
   height: auto;
   background-color: white;
@@ -153,4 +154,9 @@ img {
   white-space: pre-line;
   font-family: "CommitMono";
   font-size: 12px;
+}
+
+.paralax-labels {
+  position: absolute;
+  inset: 0;
 }

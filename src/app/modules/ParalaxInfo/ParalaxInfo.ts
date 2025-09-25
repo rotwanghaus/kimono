@@ -11,9 +11,9 @@ class ParalaxInfo {
     label.classList.add("paralax-info");
     this.target = target;
     this.element = label;
-    this.container = container;
+    this.container = document.querySelector(".paralax-labels");
     this.hasPosition = false;
-    this.container.appendChild(label);
+    this.container.prepend(label);
     this.onResize();
     this.updatePosition();
   }
