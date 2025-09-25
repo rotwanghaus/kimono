@@ -122,6 +122,8 @@ class BaseScene extends EventTarget {
     lottie.initLottie().then(() => {
       const path = container.querySelector("path");
       path.addEventListener("click", () => {
+        const event = new Event("lottie_playing");
+        this.dispatchEvent(event);
         lottie.play();
       });
 

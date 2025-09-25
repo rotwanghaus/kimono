@@ -5,8 +5,15 @@ import Scene from "./modules/Scene";
 // const phoneSize = 600;
 // const isPhone = window.innerWidth < phoneSize;
 const scene = new Scene("root", config);
+const instructionEl = document.querySelector("#instruction");
+
+scene.onPlayback(() => {
+  instructionEl.classList.remove("show");
+});
 
 scene.onReady = () => {
+  instructionEl.classList.toggle("show");
+
   if (process.env.NODE_ENV === "production") return;
   function fpsMeter() {
     let prevTime = Date.now(),
@@ -26,6 +33,7 @@ scene.onReady = () => {
       requestAnimationFrame(loop);
     });
   }
+
   fpsMeter();
   const gui = new dat.GUI({ name: "Settings" });
   // gui.close();

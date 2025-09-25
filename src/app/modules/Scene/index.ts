@@ -56,6 +56,10 @@ class Scene extends BaseScene {
     this.onReady = onReady;
   }
 
+  public onPlayback(cb: () => void) {
+    this.addEventListener("lottie_playing", cb);
+  }
+
   attachListeners() {
     window.addEventListener("resize", () => {
       this.vH = this.rootEl.clientHeight;

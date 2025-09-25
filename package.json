@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "clear": "rm -rf dist .parcel-config",
-    "dev": "pnpm clear && parcel src/index.html --no-cache",
+    "dev": "pnpm parcel src/index.html --no-cache",
     "build": "parcel build src/index.html --no-cache"
   },
   "keywords": [],
