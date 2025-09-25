@@ -20,7 +20,7 @@ scene.onPlayback(() => {
 scene.onReady = () => {
   instructionEl.classList.toggle("show");
 
-  if (process.env.NODE_ENV === "production") return;
+  // if (process.env.NODE_ENV === "production") return;
   function fpsMeter() {
     // let prevTime = Date.now(),
     //   frames = 0;
