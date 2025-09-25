@@ -28,7 +28,7 @@ scene.onReady = () => {
   }
   fpsMeter();
   const gui = new dat.GUI({ name: "Settings" });
-  gui.close();
+  // gui.close();
   const folder = gui.addFolder("paralaxAmount");
   folder.open();
   // prettier-ignore
